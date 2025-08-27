@@ -1,0 +1,2 @@
+#add-item-form { display: flex; gap: 10px; margin-bottom: 20px; }
+#existing-menu-items { display: flex; flex-wrap: wrap; gap: 20px; }

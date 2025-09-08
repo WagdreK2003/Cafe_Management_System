@@ -3,8 +3,8 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 # Import the models and configuration
-from models import db, Menu, Order, Inventory
-from config import Config
+from backend.models import db, Menu, Order, Inventory
+from backend.config import Config
 
 # Initialize Flask app
 app = Flask(__name__)

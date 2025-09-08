@@ -16,6 +16,11 @@ app.config.from_object(Config)
     # Initialize the SQLAlchemy 'db' object with the app
 db.init_app(app)
 
+# ---- Add home route here ----
+@app.route('/')
+def home():
+    return "Welcome to the Cafe Management System API! Use /api/menu, /api/orders, etc."
+
     # --- API Endpoints ---
     # Endpoint to get all menu items
 @app.route('/api/menu', methods=['GET'])

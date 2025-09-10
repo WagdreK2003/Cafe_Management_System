@@ -3,8 +3,8 @@
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 # Import the models and configuration
-from backend.models import db, Menu, Order, Inventory
-from backend.config import Config
+from models import db, Menu, Order, Inventory
+from config import Config
 
 # Initialize Flask app
 app = Flask(__name__, template_folder="templates", static_folder="static")

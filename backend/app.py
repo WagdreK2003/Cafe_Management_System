@@ -1,13 +1,13 @@
     # app.py
     # This is the main Flask application file.
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 # Import the models and configuration
 from backend.models import db, Menu, Order, Inventory
 from backend.config import Config
 
 # Initialize Flask app
-app = Flask(__name__)
+app = Flask(__name__, template_folder="templates", static_folder="static")
 CORS(app)
 
     # Configure the app using the Config class
@@ -19,7 +19,27 @@ db.init_app(app)
 # ---- Add home route here ----
 @app.route('/')
 def home():
-    return "Welcome to the Cafe Management System API! Use /api/menu, /api/orders, etc."
+    return render_template('index.html')
+
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
+
+@app.route('/inventory')
+def inventory():
+    return render_template('inventory.html')
+
+@app.route('/menu')
+def menu():
+    return render_template('menu.html')
+
+@app.route('/pos')
+def pos():
+    return render_template('pos.html')
+
+@app.route('/reports')
+def reports():
+    return render_template('reports.html')
 
     # --- API Endpoints ---
     # Endpoint to get all menu items

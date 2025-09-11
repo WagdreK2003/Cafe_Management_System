@@ -1,13 +1,13 @@
     # app.py
     # This is the main Flask application file.
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 # Import the models and configuration
 from models import db, Menu, Order, Inventory
 from config import Config
 
 # Initialize Flask app
-app = Flask(__name__, template_folder="templates", static_folder="static")
+app = Flask(__name__)
 CORS(app)
 
     # Configure the app using the Config class
@@ -15,31 +15,6 @@ app.config.from_object(Config)
 
     # Initialize the SQLAlchemy 'db' object with the app
 db.init_app(app)
-
-# ---- Add home route here ----
-@app.route('/')
-def home():
-    return render_template('index.html')
-
-@app.route('/dashboard')
-def dashboard():
-    return render_template('dashboard.html')
-
-@app.route('/inventory')
-def inventory():
-    return render_template('inventory.html')
-
-@app.route('/menu')
-def menu():
-    return render_template('menu.html')
-
-@app.route('/pos')
-def pos():
-    return render_template('pos.html')
-
-@app.route('/reports')
-def reports():
-    return render_template('reports.html')
 
     # --- API Endpoints ---
     # Endpoint to get all menu items

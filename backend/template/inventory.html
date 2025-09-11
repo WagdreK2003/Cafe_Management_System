@@ -3,15 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Inventory - BrewHub Cafe</title>
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/inventory.css') }}">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/inventory.css">
 </head>
 <body>
-  <!-- Sidebar placeholder (loaded via JS or include) -->
   <div id="sidebar"></div>
-
   <main>
     <h2>Inventory</h2>
     <table id="inventory-table">
@@ -25,10 +21,8 @@
       <tbody id="inventory-table-body"></tbody>
     </table>
   </main>
-
-  <!-- JavaScript -->
-  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/inventory.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/data.js') }}"></script>
+  <script src="js/main.js"></script>
+  <script src="js/inventory.js"></script>
+  <script src="js/data.js"></script>
 </body>
 </html>

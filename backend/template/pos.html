@@ -2,118 +2,222 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Point of Sale - BrewHub Cafe Management</title>
-  
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/pos.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Point of Sale - BrewHub Cafe Management</title>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pos.css">
 </head>
 <body class="flex bg-gray-100 min-h-screen">
 
-  <!-- Sidebar for navigation -->
-  <aside id="sidebar" class="bg-gray-800 text-gray-200 p-6">
-    <div class="flex items-center mb-8 space-x-2">
-      <button data-category="all" class="category-filter px-4 py-2 bg-amber-500 ...">
-        <i class="fa-solid fa-th-large mr-2"></i>All
-    </button>
-    </div>
-    <nav class="space-y-4">
-      <a href="{{ url_for('home') }}" class="page-link flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
-        <i class="fa-solid fa-home mr-3"></i>
-        <span>Home</span>
-      </a>
-      <a href="{{ url_for('dashboard') }}" class="page-link flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
-        <i class="fa-solid fa-gauge mr-3"></i>
-        <span>Dashboard</span>
-      </a>
-      <a href="{{ url_for('pos') }}" class="page-link active-link flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
-        <i class="fa-solid fa-cash-register mr-3"></i>
-        <span>Point of Sale</span>
-      </a>
-      <a href="{{ url_for('menu') }}" class="page-link flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
-        <i class="fa-solid fa-book-open mr-3"></i>
-        <span>Menu Management</span>
-      </a>
-      <a href="{{ url_for('inventory') }}" class="page-link flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
-        <i class="fa-solid fa-boxes-stacked mr-3"></i>
-        <span>Inventory</span>
-      </a>
-      <a href="{{ url_for('reports') }}" class="page-link flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
-        <i class="fa-solid fa-chart-line mr-3"></i>
-        <span>Sales Reports</span>
-      </a>
-    </nav>
-  </aside>
-
-  <!-- Main Content Area -->
-  <div class="flex-1 transition-all duration-300" id="main-content">
-    <!-- Persistent Header -->
-    <header class="sticky top-0 bg-white p-4 shadow-md flex items-center z-40">
-      <button id="open-sidebar" class="p-2 text-gray-700 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 rounded-full">
-        <i class="fa-solid fa-bars h-6 w-6"></i>
-      </button>
-      <div class="ml-4 flex items-center space-x-2">
-        <i class="fa-solid fa-mug-saucer text-2xl text-amber-500"></i>
-        <h1 class="text-2xl font-bold text-gray-900">BrewHub</h1>
-      </div>
-      <div class="ml-auto flex items-center space-x-4">
-        <span class="text-sm text-gray-600">Order #<span id="order-number">1234</span></span>
-        <div class="w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center">
-          <i class="fa-solid fa-user text-white text-sm"></i>
+    <!-- Sidebar for navigation -->
+    <aside id="sidebar" class="bg-gray-800 text-gray-200 p-6">
+        <div class="flex items-center mb-8 space-x-2">
+            <button id="close-sidebar" class="text-gray-400 hover:text-white">
+                <i class="fa-solid fa-times h-6 w-6"></i>
+            </button>
         </div>
-      </div>
-    </header>
+        <nav class="space-y-4">
+            <a href="index.html" class="page-link flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                <i class="fa-solid fa-home mr-3"></i>
+                <span>Home</span>
+            </a>
+            <a href="dashboard.html" class="page-link flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                <i class="fa-solid fa-gauge mr-3"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="pos.html" class="page-link active-link flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                <i class="fa-solid fa-cash-register mr-3"></i>
+                <span>Point of Sale</span>
+            </a>
+            <a href="menu.html" class="page-link flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                <i class="fa-solid fa-book-open mr-3"></i>
+                <span>Menu Management</span>
+            </a>
+            <a href="inventory.html" class="page-link flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                <i class="fa-solid fa-boxes-stacked mr-3"></i>
+                <span>Inventory</span>
+            </a>
+            <a href="reports.html" class="page-link flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                <i class="fa-solid fa-chart-line mr-3"></i>
+                <span>Sales Reports</span>
+            </a>
+        </nav>
+    </aside>
 
-    <main class="p-8">
-      <!-- POS Header -->
-      <div class="mb-6">
-        <h2 class="text-3xl font-extrabold text-gray-900 mb-2">Point of Sale</h2>
-        <p class="text-gray-600">Process orders and manage transactions</p>
-      </div>
-
-      <!-- POS layout (unchanged) -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <!-- Menu Panel -->
-        <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-md border border-gray-200 overflow-y-auto max-h-[80vh]">
-          <!-- Menu content -->
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-xl font-bold text-gray-800">Menu</h3>
-            <div class="relative">
-              <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
-              <input type="text" id="search-input" class="search-input">
+    <!-- Main Content Area -->
+    <div class="flex-1 transition-all duration-300" id="main-content">
+        
+        <!-- Persistent Header -->
+        <header class="sticky top-0 bg-white p-4 shadow-md flex items-center z-40">
+            <button id="open-sidebar" class="p-2 text-gray-700 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 rounded-full">
+                <i class="fa-solid fa-bars h-6 w-6"></i>
+            </button>
+            <div class="ml-4 flex items-center space-x-2">
+                <i class="fa-solid fa-mug-saucer text-2xl text-amber-500"></i>
+                <h1 class="text-2xl font-bold text-gray-900">BrewHub</h1>
             </div>
-          </div>
-          <div class="mb-6 flex flex-wrap gap-3" id="category-filters">
-            <!-- Category filter buttons (unchanged) -->
-          </div>
-          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4" id="menu-items">
-            <!-- Menu items loaded by JS -->
-          </div>
+            <div class="ml-auto flex items-center space-x-4">
+                <span class="text-sm text-gray-600">Order #<span id="order-number">1234</span></span>
+                <div class="w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center">
+                    <i class="fa-solid fa-user text-white text-sm"></i>
+                </div>
+            </div>
+        </header>
+
+        <main class="p-8">
+            <!-- POS Header -->
+            <div class="mb-6">
+                <h2 class="text-3xl font-extrabold text-gray-900 mb-2">Point of Sale</h2>
+                <p class="text-gray-600">Process orders and manage transactions</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Menu Panel -->
+                <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-md border border-gray-200 overflow-y-auto max-h-[80vh]">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-gray-800">Menu</h3>
+                        <div class="relative">
+                            <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                            <input type="text" id="search-input" placeholder="Search menu..." class="pl-10 p-2 border rounded-lg focus:ring-2 focus:ring-orange-500">
+                        </div>
+                    </div>
+
+                    <!-- Category Filter Buttons -->
+                    <div class="mb-6 flex flex-wrap gap-3" id="category-filters">
+                        <button data-category="all" class="px-4 py-2 bg-amber-500 text-white rounded-lg hover:bg-amber-600 transition-colors text-sm font-medium">
+                            <i class="fa-solid fa-th-large mr-2"></i>All
+                        </button>
+                        <button data-category="coffee" class="px-4 py-2 bg-amber-100 text-amber-700 rounded-lg hover:bg-amber-200 transition-colors text-sm font-medium">
+                            <i class="fa-solid fa-mug-hot mr-2"></i>Coffee
+                        </button>
+                        <button data-category="burgers" class="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors text-sm font-medium">
+                            <i class="fa-solid fa-hamburger mr-2"></i>Burgers
+                        </button>
+                        <button data-category="pizza" class="px-4 py-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition-colors text-sm font-medium">
+                            <i class="fa-solid fa-pizza-slice mr-2"></i>Pizza
+                        </button>
+                        <button data-category="chinese" class="px-4 py-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors text-sm font-medium">
+                            <i class="fa-solid fa-utensils mr-2"></i>Chinese
+                        </button>
+                        <button data-category="pastries" class="px-4 py-2 bg-purple-100 text-purple-700 rounded-lg hover:bg-purple-200 transition-colors text-sm font-medium">
+                            <i class="fa-solid fa-birthday-cake mr-2"></i>Pastries
+                        </button>
+                        <button data-category="sandwiches" class="px-4 py-2 bg-cyan-100 text-cyan-700 rounded-lg hover:bg-cyan-200 transition-colors text-sm font-medium">
+                            <i class="fa-solid fa-bread-slice mr-2"></i>Sandwiches
+                        </button>
+                        <button data-category="salads" class="px-4 py-2 bg-emerald-100 text-emerald-700 rounded-lg hover:bg-emerald-200 transition-colors text-sm font-medium">
+                            <i class="fa-solid fa-leaf mr-2"></i>Salads
+                        </button>
+                    </div>
+
+                    <!-- Menu Items Grid -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4" id="menu-items">
+                        <!-- Menu items will be populated here by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Order Panel -->
+                <div class="lg:col-span-1 flex flex-col h-full">
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Current Order</h3>
+                        
+                        <!-- Order List -->
+                        <div class="flex-grow overflow-y-auto border-b border-gray-200 mb-4" id="order-list">
+                            <div class="text-center py-8">
+                                <i class="fa-solid fa-shopping-cart text-4xl text-gray-300 mb-4"></i>
+                                <p class="text-gray-500 font-medium">No items in the order.</p>
+                                <p class="text-gray-400 text-sm mt-2">Click on menu items to add them</p>
+                            </div>
+                        </div>
+
+                        <!-- Order Summary -->
+                        <div class="space-y-2 mb-4">
+                            <div class="flex justify-between font-semibold text-gray-700">
+                                <span>Subtotal:</span>
+                                <span id="subtotal">$0.00</span>
+                            </div>
+                            <div class="flex justify-between font-semibold text-gray-700">
+                                <span>Tax (10%):</span>
+                                <span id="tax">$0.00</span>
+                            </div>
+                            <div class="flex justify-between font-bold text-2xl text-gray-900 border-t pt-2">
+                                <span>Total:</span>
+                                <span id="total">$0.00</span>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="space-y-4">
+                            <button id="process-payment" class="w-full btn-primary text-white font-bold py-3 rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                                <i class="fa-solid fa-credit-card mr-2"></i> Process Payment
+                            </button>
+                            <button id="hold-order" class="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold py-3 rounded-lg shadow-lg hover:from-amber-600 hover:to-orange-600 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-amber-500 transform hover:scale-105">
+                                <i class="fa-solid fa-pause mr-2"></i> Hold Order
+                            </button>
+                            <button id="cancel-order" class="w-full bg-gradient-to-r from-rose-500 to-pink-500 text-white font-bold py-3 rounded-lg shadow-lg hover:from-rose-600 hover:to-pink-600 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-rose-500 transform hover:scale-105">
+                                <i class="fa-solid fa-trash-can mr-2"></i> Cancel Order
+                            </button>
+                        </div>
+
+                        <!-- Order Info -->
+                        <div class="mt-4 p-3 bg-amber-50 rounded-lg border border-amber-200">
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="text-amber-700 font-medium">Items:</span>
+                                <span class="text-amber-800 font-bold" id="item-count">0</span>
+                            </div>
+                            <div class="flex items-center justify-between text-sm mt-1">
+                                <span class="text-amber-700 font-medium">Est. Time:</span>
+                                <span class="text-amber-800 font-bold" id="est-time">5-8 min</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+  </main>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="fixed inset-0 hidden items-center justify-center z-[100]">
+        <div class="modal-content p-8 max-w-md w-full mx-4">
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-credit-card text-2xl text-green-600"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-gray-800">Payment Processing</h3>
+                <p class="text-gray-600">Total Amount: <span id="payment-total" class="font-bold">$0.00</span></p>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Payment Method</label>
+                    <select id="payment-method" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500">
+                        <option value="cash">Cash</option>
+                        <option value="card">Credit/Debit Card</option>
+                        <option value="mobile">Mobile Payment</option>
+                    </select>
+                </div>
+                <div id="cash-payment" class="hidden">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Amount Received</label>
+                    <input type="number" id="cash-amount" step="0.01" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500">
+                </div>
+            </div>
+            <div class="flex justify-center space-x-4 mt-6">
+                <button id="cancel-payment" class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors font-medium">Cancel</button>
+                <button id="confirm-payment" class="px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-lg hover:from-amber-600 hover:to-orange-600 transition-all duration-200 font-medium transform hover:scale-105">Confirm Payment</button>
+            </div>
         </div>
+    </div>
 
-        <!-- Order Panel -->
-        <div class="lg:col-span-1 flex flex-col h-full">
-          <!-- Order summary content unchanged -->
-        </div>
-      </div>
-    </main>
-  </div>
-
-  <!-- Payment Modal -->
-  <div id="payment-modal" class="payment-modal fixed inset-0 hidden items-center justify-center z-[100]">
-    <!-- Modal content unchanged -->
-  </div>
-
-  <!-- JavaScript -->
-  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/data.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/pos.js') }}"></script>
+    <!-- Main JavaScript -->
+  <script src="js/main.js"></script>
+    <script src="js/data.js"></script>
+  <script src="js/pos.js"></script>
 </body>
 </html>

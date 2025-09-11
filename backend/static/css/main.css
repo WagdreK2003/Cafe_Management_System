@@ -40,9 +40,9 @@ body::before {
 
 /* Enhanced sidebar with backdrop blur */
 #sidebar {
-    background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
+    background: linear-gradient(180deg, rgba(31, 41, 55, 0.95) 0%, rgba(17, 24, 39, 0.95) 100%);
     backdrop-filter: blur(15px);
-    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2); /* keep stronger shadow */
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.2);
     top: 0;
     left: 0;
     height: 100vh;
@@ -279,6 +279,11 @@ body::before {
     box-shadow: 0 10px 25px rgba(245, 158, 11, 0.4);
 }
 
+/* Enhanced sidebar */
+#sidebar {
+    background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
+}
 
 /* Floating action button */
 .fab {

@@ -2,220 +2,264 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard - BrewHub Cafe Management</title>
-  
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - BrewHub Cafe Management</title>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body class="flex bg-gray-100 min-h-screen">
 
-  <!-- Sidebar for navigation -->
-  <aside id="sidebar" class="bg-gray-800 text-gray-200 p-6">
-    <div class="flex items-center mb-8 space-x-2">
-      <button id="close-sidebar" class="text-gray-400 hover:text-white">
-        <i class="fa-solid fa-times h-6 w-6"></i>
-      </button>
+    <!-- Sidebar for navigation -->
+    <aside id="sidebar" class="bg-gray-800 text-gray-200 p-6">
+        <div class="flex items-center mb-8 space-x-2">
+            <button id="close-sidebar" class="text-gray-400 hover:text-white">
+                <i class="fa-solid fa-times h-6 w-6"></i>
+            </button>
+        </div>
+        <nav class="space-y-4">
+            <a href="index.html" class="page-link flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                <i class="fa-solid fa-home mr-3"></i>
+                <span>Home</span>
+            </a>
+            <a href="dashboard.html" class="page-link active-link flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                <i class="fa-solid fa-gauge mr-3"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="pos.html" class="page-link flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                <i class="fa-solid fa-cash-register mr-3"></i>
+                <span>Point of Sale</span>
+            </a>
+            <a href="menu.html" class="page-link flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                <i class="fa-solid fa-book-open mr-3"></i>
+                <span>Menu Management</span>
+            </a>
+            <a href="inventory.html" class="page-link flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                <i class="fa-solid fa-boxes-stacked mr-3"></i>
+                <span>Inventory</span>
+            </a>
+            <a href="reports.html" class="page-link flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                <i class="fa-solid fa-chart-line mr-3"></i>
+                <span>Sales Reports</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 transition-all duration-300" id="main-content">
+        
+        <!-- Persistent Header -->
+        <header class="sticky top-0 bg-white p-4 shadow-md flex items-center z-40">
+            <button id="open-sidebar" class="p-2 text-gray-700 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 rounded-full">
+                <i class="fa-solid fa-bars h-6 w-6"></i>
+            </button>
+            <div class="ml-4 flex items-center space-x-2">
+                <i class="fa-solid fa-mug-saucer text-2xl text-amber-500"></i>
+                <h1 class="text-2xl font-bold text-gray-900">BrewHub</h1>
+            </div>
+            <div class="ml-auto flex items-center space-x-4">
+                <span class="text-sm text-gray-600">Welcome back, Manager!</span>
+                <div class="w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center">
+                    <i class="fa-solid fa-user text-white text-sm"></i>
+                </div>
+            </div>
+        </header>
+
+        <main class="p-8">
+            <!-- Dashboard Header -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-extrabold text-gray-900 mb-2">Dashboard</h2>
+                <p class="text-gray-600">Overview of your cafe's performance and key metrics</p>
+            </div>
+
+            <!-- Key Metrics Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 transition-transform transform hover:scale-105 gradient-card">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-600">Today's Sales</h3>
+                            <p class="text-4xl font-bold text-green-700 mt-2" id="today-sales">$1,250.00</p>
+                            <p class="text-sm text-green-600 mt-1">+12% from yesterday</p>
+                        </div>
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-dollar-sign text-green-600 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 transition-transform transform hover:scale-105 gradient-card">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-600">Active Orders</h3>
+                            <p class="text-4xl font-bold text-amber-600 mt-2" id="active-orders">15</p>
+                            <p class="text-sm text-amber-600 mt-1">Ready to be served</p>
+                        </div>
+                        <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-clock text-amber-600 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 transition-transform transform hover:scale-105 gradient-card">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-600">Low Stock Items</h3>
+                            <p class="text-4xl font-bold text-red-600 mt-2" id="low-stock">3</p>
+                            <p class="text-sm text-red-600 mt-1">Action required</p>
+                        </div>
+                        <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-exclamation-triangle text-red-600 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 transition-transform transform hover:scale-105 gradient-card">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-600">Total Menu Items</h3>
+                            <p class="text-4xl font-bold text-blue-600 mt-2" id="total-items">32</p>
+                            <p class="text-sm text-blue-600 mt-1">Across all categories</p>
+                        </div>
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-utensils text-blue-600 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts and Analytics -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <!-- Sales Trend Chart -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Daily Sales Trend</h3>
+                    <div class="w-full h-64 bg-gray-50 rounded-lg flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fa-solid fa-chart-line fa-4x text-gray-400 mb-4"></i>
+                            <p class="text-gray-500">Sales chart will be displayed here</p>
+                            <p class="text-sm text-gray-400 mt-2">Last 7 days: $8,450</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Selling Items -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Top Selling Items</h3>
+                    <div class="space-y-4" id="top-items">
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                                    <span class="text-amber-700 font-bold text-sm">1</span>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-800">Classic Burger</p>
+                                    <p class="text-sm text-gray-500">150 sold today</p>
+                                </div>
+                            </div>
+                            <span class="font-bold text-green-600">$1,348.50</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+                                    <span class="text-gray-700 font-bold text-sm">2</span>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-800">Margherita Pizza</p>
+                                    <p class="text-sm text-gray-500">120 sold today</p>
+                                </div>
+                            </div>
+                            <span class="font-bold text-green-600">$1,558.80</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-amber-800 rounded-full flex items-center justify-center">
+                                    <span class="text-amber-100 font-bold text-sm">3</span>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-800">Latte</p>
+                                    <p class="text-sm text-gray-500">200 sold today</p>
+                                </div>
+                            </div>
+                            <span class="font-bold text-green-600">$900.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions and Recent Activity -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Quick Actions -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Quick Actions</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <a href="pos.html" class="p-4 bg-amber-50 rounded-lg hover:bg-amber-100 transition-colors text-center">
+                            <i class="fa-solid fa-cash-register text-2xl text-amber-600 mb-2"></i>
+                            <p class="font-medium text-gray-800">New Order</p>
+                        </a>
+                        <a href="menu.html" class="p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors text-center">
+                            <i class="fa-solid fa-plus text-2xl text-blue-600 mb-2"></i>
+                            <p class="font-medium text-gray-800">Add Menu Item</p>
+                        </a>
+                        <a href="inventory.html" class="p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors text-center">
+                            <i class="fa-solid fa-boxes-stacked text-2xl text-green-600 mb-2"></i>
+                            <p class="font-medium text-gray-800">Check Inventory</p>
+                        </a>
+                        <a href="reports.html" class="p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors text-center">
+                            <i class="fa-solid fa-chart-line text-2xl text-purple-600 mb-2"></i>
+                            <p class="font-medium text-gray-800">View Reports</p>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Recent Activity</h3>
+                    <div class="space-y-4" id="recent-activity">
+                        <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+                            <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fa-solid fa-check text-green-600 text-sm"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-medium text-gray-800">Order #1234 completed</p>
+                                <p class="text-sm text-gray-500">2 minutes ago</p>
+                            </div>
+                            <span class="text-green-600 font-bold">$24.50</span>
+                        </div>
+                        <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+                            <div class="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                                <i class="fa-solid fa-plus text-amber-600 text-sm"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-medium text-gray-800">New menu item added</p>
+                                <p class="text-sm text-gray-500">15 minutes ago</p>
+                            </div>
+                            <span class="text-amber-600 font-bold">Chicken Wrap</span>
+                        </div>
+                        <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+                            <div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                                <i class="fa-solid fa-exclamation text-red-600 text-sm"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-medium text-gray-800">Low stock alert</p>
+                                <p class="text-sm text-gray-500">1 hour ago</p>
+                            </div>
+                            <span class="text-red-600 font-bold">Milk</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
-    <nav class="space-y-4">
-      <a href="{{ url_for('home') }}" class="page-link flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
-        <i class="fa-solid fa-home mr-3"></i>
-        <span>Home</span>
-      </a>
-      <a href="{{ url_for('dashboard') }}" class="page-link active-link flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
-        <i class="fa-solid fa-gauge mr-3"></i>
-        <span>Dashboard</span>
-      </a>
-      <a href="{{ url_for('pos') }}" class="page-link flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
-        <i class="fa-solid fa-cash-register mr-3"></i>
-        <span>Point of Sale</span>
-      </a>
-      <a href="{{ url_for('menu') }}" class="page-link flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
-        <i class="fa-solid fa-book-open mr-3"></i>
-        <span>Menu Management</span>
-      </a>
-      <a href="{{ url_for('inventory') }}" class="page-link flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
-        <i class="fa-solid fa-boxes-stacked mr-3"></i>
-        <span>Inventory</span>
-      </a>
-      <a href="{{ url_for('reports') }}" class="page-link flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
-        <i class="fa-solid fa-chart-line mr-3"></i>
-        <span>Sales Reports</span>
-      </a>
-    </nav>
-  </aside>
 
-  <!-- Main Content Area -->
-  <div class="flex-1 transition-all duration-300" id="main-content">
-    <!-- Persistent Header -->
-    <header class="sticky top-0 bg-white p-4 shadow-md flex items-center z-40">
-      <button id="open-sidebar" class="p-2 text-gray-700 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 rounded-full">
-        <i class="fa-solid fa-bars h-6 w-6"></i>
-      </button>
-      <div class="ml-4 flex items-center space-x-2">
-        <i class="fa-solid fa-mug-saucer text-2xl text-amber-500"></i>
-        <h1 class="text-2xl font-bold text-gray-900">BrewHub</h1>
-      </div>
-      <div class="ml-auto flex items-center space-x-4">
-        <span class="text-sm text-gray-600">Welcome back, Manager!</span>
-        <div class="w-8 h-8 bg-amber-500 rounded-full flex items-center justify-center">
-          <i class="fa-solid fa-user text-white text-sm"></i>
-        </div>
-      </div>
-    </header>
-
-    <main class="p-8">
-      <!-- Dashboard Header -->
-      <div class="mb-8">
-        <h2 class="text-3xl font-extrabold text-gray-900 mb-2">Dashboard</h2>
-        <p class="text-gray-600">Overview of your cafe's performance and key metrics</p>
-      </div>
-
-      <!-- Key Metrics Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <!-- Today's Sales -->
-        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 transition-transform transform hover:scale-105 gradient-card">
-          <div class="flex items-center justify-between">
-            <div>
-              <h3 class="text-lg font-semibold text-gray-600">Today's Sales</h3>
-              <p class="text-4xl font-bold text-green-700 mt-2" id="today-sales">$1,250.00</p>
-              <p class="text-sm text-green-600 mt-1">+12% from yesterday</p>
-            </div>
-            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-              <i class="fa-solid fa-dollar-sign text-green-600 text-xl"></i>
-            </div>
-          </div>
-        </div>
-
-        <!-- Active Orders -->
-        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 transition-transform transform hover:scale-105 gradient-card">
-          <div class="flex items-center justify-between">
-            <div>
-              <h3 class="text-lg font-semibold text-gray-600">Active Orders</h3>
-              <p class="text-4xl font-bold text-amber-600 mt-2" id="active-orders">15</p>
-              <p class="text-sm text-amber-600 mt-1">Ready to be served</p>
-            </div>
-            <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center">
-              <i class="fa-solid fa-clock text-amber-600 text-xl"></i>
-            </div>
-          </div>
-        </div>
-
-        <!-- Low Stock -->
-        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 transition-transform transform hover:scale-105 gradient-card">
-          <div class="flex items-center justify-between">
-            <div>
-              <h3 class="text-lg font-semibold text-gray-600">Low Stock Items</h3>
-              <p class="text-4xl font-bold text-red-600 mt-2" id="low-stock">3</p>
-              <p class="text-sm text-red-600 mt-1">Action required</p>
-            </div>
-            <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
-              <i class="fa-solid fa-exclamation-triangle text-red-600 text-xl"></i>
-            </div>
-          </div>
-        </div>
-
-        <!-- Total Items -->
-        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 transition-transform transform hover:scale-105 gradient-card">
-          <div class="flex items-center justify-between">
-            <div>
-              <h3 class="text-lg font-semibold text-gray-600">Total Menu Items</h3>
-              <p class="text-4xl font-bold text-blue-600 mt-2" id="total-items">32</p>
-              <p class="text-sm text-blue-600 mt-1">Across all categories</p>
-            </div>
-            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-              <i class="fa-solid fa-utensils text-blue-600 text-xl"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Charts & Analytics -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
-          <h3 class="text-xl font-bold text-gray-800 mb-4">Daily Sales Trend</h3>
-          <div class="w-full h-64 bg-gray-50 rounded-lg flex items-center justify-center">
-            <div class="text-center">
-              <i class="fa-solid fa-chart-line fa-4x text-gray-400 mb-4"></i>
-              <p class="text-gray-500">Sales chart will be displayed here</p>
-              <p class="text-sm text-gray-400 mt-2">Last 7 days: $8,450</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
-          <h3 class="text-xl font-bold text-gray-800 mb-4">Top Selling Items</h3>
-          <div class="space-y-4" id="top-items">
-            <!-- Example items -->
-            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-              <div class="flex items-center space-x-3">
-                <div class="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
-                  <span class="text-amber-700 font-bold text-sm">1</span>
-                </div>
-                <div>
-                  <p class="font-medium text-gray-800">Classic Burger</p>
-                  <p class="text-sm text-gray-500">150 sold today</p>
-                </div>
-              </div>
-              <span class="font-bold text-green-600">$1,348.50</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Quick Actions & Recent Activity -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
-          <h3 class="text-xl font-bold text-gray-800 mb-4">Quick Actions</h3>
-          <div class="grid grid-cols-2 gap-4">
-            <a href="{{ url_for('pos') }}" class="p-4 bg-amber-50 rounded-lg hover:bg-amber-100 transition-colors text-center">
-              <i class="fa-solid fa-cash-register text-2xl text-amber-600 mb-2"></i>
-              <p class="font-medium text-gray-800">New Order</p>
-            </a>
-            <a href="{{ url_for('menu') }}" class="p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors text-center">
-              <i class="fa-solid fa-plus text-2xl text-blue-600 mb-2"></i>
-              <p class="font-medium text-gray-800">Add Menu Item</p>
-            </a>
-            <a href="{{ url_for('inventory') }}" class="p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors text-center">
-              <i class="fa-solid fa-boxes-stacked text-2xl text-green-600 mb-2"></i>
-              <p class="font-medium text-gray-800">Check Inventory</p>
-            </a>
-            <a href="{{ url_for('reports') }}" class="p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors text-center">
-              <i class="fa-solid fa-chart-line text-2xl text-purple-600 mb-2"></i>
-              <p class="font-medium text-gray-800">View Reports</p>
-            </a>
-          </div>
-        </div>
-
-        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
-          <h3 class="text-xl font-bold text-gray-800 mb-4">Recent Activity</h3>
-          <div class="space-y-4" id="recent-activity">
-            <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-              <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                <i class="fa-solid fa-check text-green-600 text-sm"></i>
-              </div>
-              <div class="flex-1">
-                <p class="font-medium text-gray-800">Order #1234 completed</p>
-                <p class="text-sm text-gray-500">2 minutes ago</p>
-              </div>
-              <span class="text-green-600 font-bold">$24.50</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
-  </div>
-
-  <!-- Main JavaScript -->
-  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/data.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+    <!-- Main JavaScript -->
+  <script src="js/main.js"></script>
+    <script src="js/data.js"></script>
+  <script src="js/dashboard.js"></script>
 </body>
 </html>
